@@ -8,6 +8,7 @@ import org.younes.prayerapp.model.PrayerTimingResponse;
 
 import java.time.LocalDate;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 @Service
@@ -22,16 +23,20 @@ public class PrayerApiService {
         this.prayerConversionService = prayerConversionService;
     }
 
-    public PrayerTiming fetchPrayerTimes(LocalDate date) {
+    public PrayerTiming fetchPrayerTimes(LocalDate date, String longitude, String latitude) {
 
-        long timestamp = date.atStartOfDay(ZoneOffset.UTC).toEpochSecond();
+        String formattedDate = date.format(
+                DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        );
 
         System.out.println("A request has been made!");
 
         if(prayerTimingsByDateMap.containsKey(date)) return prayerTimingsByDateMap.get(date);
 
-        String url = String.format("https://api.aladhan.com/v1/timings/%d?latitude=39.80494195&longitude=-86.20418314801927&method=2",
-                timestamp);
+        String url = String.format("https://api.aladhan.com/v1/timings/%s?latitude=%s&longitude=%s&method=2",
+                formattedDate,
+                latitude,
+                longitude);
 
         PrayerTimingResponse response = restTemplate.getForObject(url, PrayerTimingResponse.class);
 

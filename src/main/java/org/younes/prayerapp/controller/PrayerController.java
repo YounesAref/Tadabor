@@ -21,9 +21,12 @@ public class PrayerController {
         this.prayerApiService = prayerApiService;
     }
 
-    @RequestMapping("/{date}")
-    public PrayerTiming getPrayerTiming(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        return prayerApiService.fetchPrayerTimes(date);
+
+    @RequestMapping("/prayerTimes/{date}/{longitude}/{latitude}")
+    public PrayerTiming getPrayerTiming(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+                                        @PathVariable String longitude,
+                                        @PathVariable String latitude) {
+        return prayerApiService.fetchPrayerTimes(date, longitude, latitude);
     }
 
     @GetMapping
@@ -34,7 +37,12 @@ public class PrayerController {
 
             @RequestParam
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-            LocalDate endDate
+            LocalDate endDate,
+
+            @RequestParam
+            String longitude,
+            @RequestParam
+            String latitude
     ) {
 
         if(endDate.isBefore(startDate)) {
@@ -47,7 +55,7 @@ public class PrayerController {
         List<PrayerTiming> prayerTimings = new ArrayList<>();
 
         for(LocalDate start = startDate; start.isBefore(endDate) || start.isEqual(endDate); start = start.plusDays(1)) {
-            prayerTimings.add(prayerApiService.fetchPrayerTimes(start));
+            prayerTimings.add(prayerApiService.fetchPrayerTimes(start, longitude, latitude));
         }
 
         return prayerTimings;
