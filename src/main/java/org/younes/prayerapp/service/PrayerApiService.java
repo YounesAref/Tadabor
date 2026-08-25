@@ -31,7 +31,7 @@ public class PrayerApiService {
 
         System.out.println("A request has been made!");
 
-        if(prayerTimingsByDateMap.containsKey(date)) return prayerTimingsByDateMap.get(date);
+//        if(prayerTimingsByDateMap.containsKey(date)) return prayerTimingsByDateMap.get(date);
 
         String url = String.format("https://api.aladhan.com/v1/timings/%s?latitude=%s&longitude=%s&method=2",
                 formattedDate,

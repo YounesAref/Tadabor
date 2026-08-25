@@ -35,20 +35,15 @@ public class PrayerConversionService {
     private List<Prayer> createPrayerList(PrayerTimingResponse response) {
 
         Prayer fajr = new Prayer("Fajr",
-                convertToLocalTime(response.getData().getTimings().getFajr()),
-                addIqamah(response.getData().getTimings().getFajr(), 20));
+                convertToLocalTime(response.getData().getTimings().getFajr()));
         Prayer dhuhr = new Prayer("Dhuhr",
-                convertToLocalTime(response.getData().getTimings().getDhuhr()),
-                addIqamah(response.getData().getTimings().getDhuhr(), 20));
+                convertToLocalTime(response.getData().getTimings().getDhuhr()));
         Prayer asr = new Prayer("Asr",
-                convertToLocalTime(response.getData().getTimings().getAsr()),
-                addIqamah(response.getData().getTimings().getAsr(), 20));
+                convertToLocalTime(response.getData().getTimings().getAsr()));
         Prayer maghrib = new Prayer("Maghrib",
-                convertToLocalTime(response.getData().getTimings().getMaghrib()),
-                addIqamah(response.getData().getTimings().getMaghrib(), 5));
+                convertToLocalTime(response.getData().getTimings().getMaghrib()));
         Prayer isha = new Prayer("Isha",
-                convertToLocalTime(response.getData().getTimings().getIsha()),
-                addIqamah(response.getData().getTimings().getIsha(), 20));
+                convertToLocalTime(response.getData().getTimings().getIsha()));
 
         return List.of(fajr, dhuhr, asr, maghrib, isha);
     }
