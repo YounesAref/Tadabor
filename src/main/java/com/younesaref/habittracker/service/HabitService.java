@@ -6,6 +6,7 @@ import com.younesaref.habittracker.repository.HabitRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class HabitService {
@@ -24,8 +25,8 @@ public class HabitService {
         return habitRepository.findById(id).orElse(null);
     }
 
-    public List<Habit> findByUser(User user) {
-        return habitRepository.findByUser(user);
+    public List<Habit> findBySupabaseId(UUID supabaseId) {
+        return habitRepository.findByUser_SupabaseId(supabaseId);
     }
 
     public List<Habit> findByUserAndActive(User user, boolean active) {

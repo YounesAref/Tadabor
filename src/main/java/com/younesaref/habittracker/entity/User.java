@@ -6,8 +6,10 @@ import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
+@Table(name = "users")
 @Getter
 public class User {
 
@@ -15,7 +17,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String supabaseId;
+    private UUID supabaseId;
     private String username;
     private String email;
     private LocalDate createdAt;
@@ -24,7 +26,7 @@ public class User {
     public User() {
     }
 
-    public User(String supabaseId, String username, String email) {
+    public User(UUID supabaseId, String username, String email) {
         this.supabaseId = supabaseId;
         this.username = username;
         this.email = email;
