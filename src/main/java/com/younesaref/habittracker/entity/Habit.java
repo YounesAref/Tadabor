@@ -16,6 +16,7 @@ public class Habit {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @Setter
     private User user;
     @Setter
     private String name;
