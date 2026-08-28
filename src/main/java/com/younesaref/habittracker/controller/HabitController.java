@@ -1,6 +1,7 @@
 package com.younesaref.habittracker.controller;
 
 import com.younesaref.habittracker.DTO.HabitResponse;
+import com.younesaref.habittracker.DTO.UpdateHabitResponse;
 import com.younesaref.habittracker.entity.Habit;
 import com.younesaref.habittracker.service.HabitService;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +49,39 @@ public class HabitController {
 
         return ResponseEntity.ok().build();
     }
+
+
+    @PatchMapping("/{habitId}")
+    public ResponseEntity<Void> update(@RequestBody UpdateHabitResponse request,
+                                       @RequestParam UUID supabaseId,
+                                       @PathVariable Long habitId) {
+        Habit habit = habitService.findById(habitId);
+
+        if (habit == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        if(!habit.getUser().getSupabaseId().equals(supabaseId)){
+            return ResponseEntity.status(403).build();
+        }
+
+        if(request.name() != null) {habit.setName(request.name());}
+
+        if(request.description() != null) {habit.setDescription(request.description());}
+
+        if(request.color() != null) {habit.setColor(request.color());}
+
+        if(request.category() != null) {habit.setCategory(request.category());}
+
+        if(request.frequency() != null) {habit.setFrequency(request.frequency());}
+
+        if(request.active() != null) {habit.setActive(request.active());}
+
+        habitService.saveHabit(habit, supabaseId);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
 
 
