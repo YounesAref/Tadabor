@@ -30,8 +30,8 @@ public class HabitCompletion {
     public HabitCompletion() {
     }
 
-    public HabitCompletion(Habit habit) {
+    public HabitCompletion(Habit habit,  LocalDate completedOn) {
         this.habit = habit;
-        this.completedOn = LocalDate.now();
+        this.completedOn = completedOn;
     }
 }

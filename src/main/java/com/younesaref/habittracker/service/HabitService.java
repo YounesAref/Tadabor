@@ -36,6 +36,16 @@ public class HabitService {
         return habitRepository.findByUser_SupabaseId(supabaseId);
     }
 
+    public Optional<Habit> findById_supabaseId(Long habitId, UUID supabaseId) {
+        User user = userRepository.findBySupabaseId(supabaseId).orElseThrow(() -> new RuntimeException("User not found"));
+
+        Habit habit = habitRepository.findById(habitId).orElse(null);
+
+        if(habit == null || habit.getUser() != user) {return Optional.empty();}
+
+        return Optional.of(habit);
+    }
+
     public List<Habit> findByUserAndActive(User user, boolean active) {
         return habitRepository.findByUserAndActive(user, active);
     }
