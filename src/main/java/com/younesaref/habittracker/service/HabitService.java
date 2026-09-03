@@ -41,7 +41,7 @@ public class HabitService {
 
         Habit habit = habitRepository.findById(habitId).orElse(null);
 
-        if(habit == null || habit.getUser() != user) {return Optional.empty();}
+        if(habit == null || !habit.getUser().getSupabaseId().equals(supabaseId)) {return Optional.empty();}
 
         return Optional.of(habit);
     }
