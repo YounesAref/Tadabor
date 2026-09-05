@@ -4,8 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
-		"com.younesaref.habittracker",
-		"org.younes.prayerapp"
+		"com.younesaref.habittracker"
 })
 public class HabittrackerApplication {
 

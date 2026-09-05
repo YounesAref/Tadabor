@@ -1,4 +1,4 @@
-package org.younes.prayerapp.config;
+package com.younesaref.prayerapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

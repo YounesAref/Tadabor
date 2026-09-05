@@ -1,4 +1,4 @@
-package org.younes.prayerapp.model;
+package com.younesaref.prayerapp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

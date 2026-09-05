@@ -1,13 +1,11 @@
-package org.younes.prayerapp.service;
+package com.younesaref.prayerapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.younes.prayerapp.model.PrayerTiming;
-import org.younes.prayerapp.model.PrayerTimingResponse;
+import com.younesaref.prayerapp.model.PrayerTiming;
+import com.younesaref.prayerapp.model.PrayerTimingResponse;
 
 import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 

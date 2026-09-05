@@ -1,4 +1,4 @@
-package org.younes.prayerapp.model;
+package com.younesaref.prayerapp.model;
 
 import java.time.LocalTime;
 

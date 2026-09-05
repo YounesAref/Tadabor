@@ -1,11 +1,11 @@
-package org.younes.prayerapp.controller;
+package com.younesaref.prayerapp.controller;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import org.younes.prayerapp.model.PrayerTiming;
-import org.younes.prayerapp.service.PrayerApiService;
+import com.younesaref.prayerapp.model.PrayerTiming;
+import com.younesaref.prayerapp.service.PrayerApiService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,14 +1,13 @@
-package org.younes.prayerapp.service;
+package com.younesaref.prayerapp.service;
 
 import org.springframework.stereotype.Service;
-import org.younes.prayerapp.model.Prayer;
-import org.younes.prayerapp.model.PrayerTiming;
-import org.younes.prayerapp.model.PrayerTimingResponse;
+import com.younesaref.prayerapp.model.Prayer;
+import com.younesaref.prayerapp.model.PrayerTiming;
+import com.younesaref.prayerapp.model.PrayerTimingResponse;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
