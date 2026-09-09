@@ -17,7 +17,7 @@ public class DailyReflectionService {
     }
 
     public Optional<DailyReflection> findByDate(LocalDate date) {
-        return Optional.ofNullable(dailyReflectionRepository.findByDate(date));
+        return dailyReflectionRepository.findByDate(date);
     }
 
     public void save(DailyReflection dailyReflection) {

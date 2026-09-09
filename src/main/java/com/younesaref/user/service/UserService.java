@@ -1,6 +1,6 @@
-package com.younesaref.habittracker.service;
+package com.younesaref.user.service;
 
-import com.younesaref.habittracker.repository.UserRepository;
+import com.younesaref.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,6 +11,5 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
 }

@@ -1,9 +1,9 @@
 package com.younesaref.habittracker.service;
 
 import com.younesaref.habittracker.entity.Habit;
-import com.younesaref.habittracker.entity.User;
+import com.younesaref.user.model.User;
 import com.younesaref.habittracker.repository.HabitRepository;
-import com.younesaref.habittracker.repository.UserRepository;
+import com.younesaref.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

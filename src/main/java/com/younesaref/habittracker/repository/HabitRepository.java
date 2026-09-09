@@ -1,7 +1,7 @@
 package com.younesaref.habittracker.repository;
 
 import com.younesaref.habittracker.entity.Habit;
-import com.younesaref.habittracker.entity.User;
+import com.younesaref.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

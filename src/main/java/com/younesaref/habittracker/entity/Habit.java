@@ -1,5 +1,6 @@
 package com.younesaref.habittracker.entity;
 
+import com.younesaref.user.model.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,8 +17,8 @@ public class Habit {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @Setter
     private User user;
+
     @Setter
     private String name;
 
@@ -38,8 +39,6 @@ public class Habit {
     @Setter
     private boolean active;
 
-    public Habit() {
-    }
 
     public Habit(User user,
                  String name,
@@ -55,6 +54,5 @@ public class Habit {
         this.category = category;
         this.frequency = frequency;
         this.active = true;
-
     }
 }

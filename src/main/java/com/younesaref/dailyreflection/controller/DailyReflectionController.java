@@ -2,6 +2,7 @@ package com.younesaref.dailyreflection.controller;
 
 import com.younesaref.dailyreflection.model.DailyReflection;
 import com.younesaref.dailyreflection.service.DailyReflectionService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -9,7 +10,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDate;
 import java.util.Optional;
 
-@RestController("/api/daily-reflection")
+@RestController
+@RequestMapping("/api/daily-reflection")
 public class DailyReflectionController {
 
     private DailyReflectionService dailyReflectionService;
@@ -18,8 +20,9 @@ public class DailyReflectionController {
         this.dailyReflectionService = dailyReflectionService;
     }
 
-    @GetMapping
-    public DailyReflection getDailyReflection(@PathVariable LocalDate date) {
+    @GetMapping("/{date}")
+    public DailyReflection getDailyReflection(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                                                  LocalDate date) {
         return dailyReflectionService.findByDate(date)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
@@ -27,6 +30,11 @@ public class DailyReflectionController {
                 ));
     }
 
-    @PutMapping
-    public void addDailyReflection(@RequestBody DailyReflection dailyReflection) {}
+    @PutMapping("/{date}")
+    public void addDailyReflection(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+            @RequestBody DailyReflection request) {
+        if (request == null) {throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid request");}
+
+        dailyReflectionService.save(request);
+    }
 }

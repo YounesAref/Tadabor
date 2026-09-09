@@ -1,4 +1,4 @@
-package com.younesaref.habittracker.entity;
+package com.younesaref.user.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
